@@ -20,6 +20,7 @@ namespace Project.TimeEntity
             IdWave = NewIdWave;
             NumberZombies = NewNumberZombies;
         }
+
         public void Play(List<Soldier> ListOfSoldier, Wall DefenseWall)
         {
 

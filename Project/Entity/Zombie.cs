@@ -39,7 +39,7 @@ namespace Project.Entity
 
         public void TakeDamage(int DamageTaken)
         {
-            CurrentHealth -= DamageTaken;
+                 -= DamageTaken;
             if (CurrentHealth <=0)
             {
                 Console.WriteLine(Name + " fainted \n");
