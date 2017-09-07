@@ -14,16 +14,39 @@ namespace Project.TimeEntity
         //Attribut du tour
         private int idTurn;
 
+        public Turn()
+        {
+
+        }
+
+        public Turn(int NewIdTurn)
+        {
+            IdTurn = NewIdTurn;
+        }
+
+
+
         //Méthode pour débuter le combat entre les soldats et les zombies
         public void AttackPhase(List<Soldier> ListOfSoldier, List<Zombie>ListOfZombie)
         {
             for (int i = 0; i < ListOfSoldier.Count; i++)
             {
-                /*Zombie LastZombie = FindFirstZombieAlive(ListOfZombie);
-                if (LastZombie != null)
-                {
+                int nbAttack = 0;
 
-                }*/
+                for (int y = ListOfSoldier[i].CurrentHit; y > 0; y--)
+                {
+                    nbAttack ++;
+
+                    Zombie LastZombie = FindFirstZombieAlive(ListOfZombie);
+                    if (LastZombie != null)
+                    {
+                        ListOfSoldier[i].Attack(LastZombie);
+                    }
+                }
+                Console.WriteLine("__________________");
+                Console.WriteLine("Current " + ListOfSoldier[i].CurrentHit);
+                Console.WriteLine("nbAttack " + nbAttack);
+                Console.WriteLine("__________________");
             }
         }
 

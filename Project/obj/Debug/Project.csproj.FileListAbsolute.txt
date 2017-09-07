@@ -12,3 +12,10 @@ C:\Users\Florian Allermoz\Desktop\CSharpProject\Project\obj\Debug\Project.csproj
 C:\Users\Florian Allermoz\Desktop\CSharpProject\Project\obj\Debug\Project.csproj.CoreCompileInputs.cache
 C:\Users\Florian Allermoz\Desktop\CSharpProject\Project\obj\Debug\Project.exe
 C:\Users\Florian Allermoz\Desktop\CSharpProject\Project\obj\Debug\Project.pdb
+C:\Users\Clément\Desktop\Efrei\M1\Cours\C#\ProjectZombieGame\CSharpProject\Project\bin\Debug\Project.exe.config
+C:\Users\Clément\Desktop\Efrei\M1\Cours\C#\ProjectZombieGame\CSharpProject\Project\bin\Debug\Project.exe
+C:\Users\Clément\Desktop\Efrei\M1\Cours\C#\ProjectZombieGame\CSharpProject\Project\bin\Debug\Project.pdb
+C:\Users\Clément\Desktop\Efrei\M1\Cours\C#\ProjectZombieGame\CSharpProject\Project\obj\Debug\Project.csprojResolveAssemblyReference.cache
+C:\Users\Clément\Desktop\Efrei\M1\Cours\C#\ProjectZombieGame\CSharpProject\Project\obj\Debug\Project.csproj.CoreCompileInputs.cache
+C:\Users\Clément\Desktop\Efrei\M1\Cours\C#\ProjectZombieGame\CSharpProject\Project\obj\Debug\Project.exe
+C:\Users\Clément\Desktop\Efrei\M1\Cours\C#\ProjectZombieGame\CSharpProject\Project\obj\Debug\Project.pdb

@@ -19,7 +19,6 @@ namespace Project
             //Création des joueur de la partie
             List<Soldier> ListOfSoldier = InitSoldier(3);
             Wall DefenseWall = new Wall(10, 10);
-
             /* Console.WriteLine(ListOfSoldier[0].ToString());
              Console.WriteLine();
              Console.WriteLine();
@@ -74,6 +73,9 @@ namespace Project
             Wave vagueTest = new Wave(1, 10);
             vagueTest.UpdateLevel(ListOfSoldier);
             Console.WriteLine(ListOfSoldier[0].ToString());
+            Turn tour = new Turn(1);
+            tour.AttackPhase(ListOfSoldier, ListZombie);
+
 
             Console.WriteLine();
             Console.WriteLine();
@@ -81,7 +83,7 @@ namespace Project
             Console.WriteLine();
             Console.WriteLine();
 
-            Console.WriteLine(vagueTest.ToString());
+            //Console.WriteLine(vagueTest.ToString());
             Console.ReadLine();
 
 
