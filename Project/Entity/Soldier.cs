@@ -38,7 +38,21 @@ namespace Project.Entity
             Name = NewNameSoldier;
         }
 
+<<<<<<< HEAD
         //Méthode pour que le soldat prenne un niveau supérieur 
+=======
+        public bool IsAlive()
+        {
+            return (CurrentHealth > 0);
+        }
+
+        public bool canAttack()
+        {
+            return (currentHit > 0);
+        }
+
+
+>>>>>>> 266f0346187363beedf824bb7ea7d4778cf50d92
         public void TakeLevel(int NbLevel)
         {
             //on ajoute à ses attibuts son nouveau niveau
