@@ -38,8 +38,10 @@ namespace Project.TimeEntity
                     nbAttack ++;
 
                     Zombie LastZombie = FindFirstZombieAlive(ListOfZombie);
+                    
                     if (LastZombie != null)
                     {
+                        Console.WriteLine("ATTACKED DONE");
                         ListOfSoldier[i].Attack(LastZombie);
                     }
                 }
@@ -63,10 +65,14 @@ namespace Project.TimeEntity
         public Zombie FindFirstZombieAlive(List<Zombie> ListOfZombie)
         {
             int i = 0;
-            while ((!ListOfZombie[i].IsAlive()) && (i< ListOfZombie.Count))
+            
+            while ((ListOfZombie[i].IsAlive()) && (i< ListOfZombie.Count))
             {
                 if (ListOfZombie[i].IsAlive())
                 {
+                    Console.WriteLine("------------------------------------------------------");
+                    Console.WriteLine(ListOfZombie[i].ToString());
+                    Console.WriteLine("------------------------------------------------------");
                     return (ListOfZombie[i]);
                 }
                 i++;

@@ -19,6 +19,13 @@ namespace Project
             //Création des joueur de la partie
             List<Soldier> ListOfSoldier = InitSoldier(3);
             Wall DefenseWall = new Wall(10, 10);
+            List<Zombie> ListZombie = new List<Zombie>();
+            Zombie zombie = new Zombie(1, 1, 1, 1, 1, 1, "Zombie");
+            Zombie zomb = new Zombie(1, 1, 1, 1, 1, 1, "Zomb");
+            Zombie z = new Zombie(1, 1, 1, 1, 1, 1, "Z");
+            ListZombie.Add(zombie);
+            ListZombie.Add(zomb);
+            ListZombie.Add(z);
             /* Console.WriteLine(ListOfSoldier[0].ToString());
              Console.WriteLine();
              Console.WriteLine();
@@ -82,7 +89,9 @@ namespace Project
             Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine();
-
+            Console.WriteLine("Zombie " + zombie.ToString());
+            Console.WriteLine("Zomb " + zomb.ToString());
+            Console.WriteLine("Z " + z.ToString());
             //Console.WriteLine(vagueTest.ToString());
             Console.ReadLine();
 
