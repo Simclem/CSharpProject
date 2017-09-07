@@ -43,8 +43,12 @@ namespace Project.Entity
         //Méthode pour que le zombie prenne des dégats
         public void TakeDamage(int DamageTaken)
         {
+<<<<<<< HEAD
             CurrentHealth -= DamageTaken;
             //Si le zombie est battu
+=======
+            currentHealth -= DamageTaken;
+>>>>>>> 227166f808e65f16fda2e9e45ec99480bfdcc921
             if (CurrentHealth <=0)
             {
                 Console.WriteLine(Name + " fainted \n");

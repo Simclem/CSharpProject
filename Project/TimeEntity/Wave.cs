@@ -26,7 +26,10 @@ namespace Project.TimeEntity
             NumberZombies = NewNumberZombies;
         }
 
+<<<<<<< HEAD
         //Méthode pour commencer la vague
+=======
+>>>>>>> 227166f808e65f16fda2e9e45ec99480bfdcc921
         public void Play(List<Soldier> ListOfSoldier, Wall DefenseWall)
         {
             //TODO Créer le nombre de zombie qui vont attaquer

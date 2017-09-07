@@ -19,7 +19,11 @@ namespace Project.TimeEntity
         {
             for (int i = 0; i < ListOfSoldier.Count; i++)
             {
+                /*Zombie LastZombie = FindFirstZombieAlive(ListOfZombie);
+                if (LastZombie != null)
+                {
 
+                }*/
             }
         }
 
