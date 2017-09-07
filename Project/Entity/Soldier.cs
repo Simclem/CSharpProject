@@ -1,4 +1,6 @@
-﻿using System;
+﻿//Clément Simon & Florian Allermoz - C# Project - 2017
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +10,8 @@ namespace Project.Entity
 {
     class Soldier
     {
+
+        //Attributs d'un soldat
         private int currentHealth;
         private int maxHealth;
         private int currentHit;
@@ -17,10 +21,11 @@ namespace Project.Entity
         private int zombieKillesThisTurn;
         private string name;
 
-
+        //Constructeur par défaut
         public Soldier()
         { }
 
+        //Constructeur avec les attributs
         public Soldier(int NewCurrentHealth, int NewMaxHealth, int NewCurrentHit, int NewMaxHit, int newLevel, int NewDamage, int NewZombieKillesThisTurn, string NewNameSoldier)
         {
             CurrentHealth = NewCurrentHealth;
@@ -32,6 +37,7 @@ namespace Project.Entity
             ZombieKillesThisTurn = NewZombieKillesThisTurn;
             Name = NewNameSoldier;
         }
+
 
         public bool IsAlive()
         {
@@ -46,24 +52,32 @@ namespace Project.Entity
 
         public void TakeLevel(int NbLevel)
         {
-            CurrentHealth += 1 * NbLevel;
-            MaxHealth += 1 * NbLevel;
-            Level += 1 * NbLevel;
-            if((Level % 10) >= 1)
+            //on ajoute à ses attibuts son nouveau niveau
+            CurrentHealth += NbLevel;
+            MaxHealth += NbLevel;
+            Level += NbLevel;
+            //Son hit maximum dépend dans quel dizaine est son niveau
+            if ((Level % 10) >= 1)
             {
                 MaxHit = ((int)(Level / 10)) + 1;
             }
         }
+
+        //Méthode pour qu'un soldat prenne un dommage
         public void TakeDamage(int DamageTaken)
         {
             CurrentHealth -= DamageTaken;
+            //Si le soldat meurt au combat
             if (CurrentHealth<=0)
             {
                 Console.WriteLine(Name + " fainted \n");
             }
         }
+
+        //Méthode pour que le soldat gagne de la vie
         public void TakeHeal(int HealTaken)
         {
+            //Si ça dépasse son maximum de vie possible
             if ((CurrentHealth + HealTaken) > MaxHealth)
             {
                 CurrentHealth = MaxHealth;
@@ -74,23 +88,17 @@ namespace Project.Entity
             }
         }
 
+        //Méthode pour qu'un soldat attaque un zombie
         public void Attack(Zombie ZombieAttacked)
         {
+            //le zombie prend le dommage du soldat
             ZombieAttacked.TakeDamage(this.Damage);
+            //le soldat incrémente son compteur de zombie tués
             if (ZombieAttacked.CurrentHealth <= 0 )
             {
                 this.ZombieKillesThisTurn += 1;
             }
         }
-
-
-
-
-
-
-
-
-
 
         
         public int CurrentHealth
@@ -170,7 +178,6 @@ namespace Project.Entity
                 this.zombieKillesThisTurn = value;
             }
         }
-
         public string Name
         {
             get
