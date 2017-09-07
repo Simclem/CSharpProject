@@ -49,7 +49,10 @@ namespace Project.Entity
 
 
 
-
+        public bool canAttack()
+        {
+            return (currentHit > 0);
+        }
 
 
 

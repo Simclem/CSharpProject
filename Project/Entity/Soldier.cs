@@ -33,7 +33,15 @@ namespace Project.Entity
             Name = NewNameSoldier;
         }
 
+        public bool IsAlive()
+        {
+            return (CurrentHealth > 0);
+        }
 
+        public bool canAttack()
+        {
+            return (currentHit > 0);
+        }
 
 
         public void TakeLevel(int NbLevel)
