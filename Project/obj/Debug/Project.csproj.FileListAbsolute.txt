@@ -1,0 +1,7 @@
+C:\Users\Clément\Desktop\Efrei\M1\Cours\C#\Project\Project\bin\Debug\Project.exe.config
+C:\Users\Clément\Desktop\Efrei\M1\Cours\C#\Project\Project\bin\Debug\Project.exe
+C:\Users\Clément\Desktop\Efrei\M1\Cours\C#\Project\Project\bin\Debug\Project.pdb
+C:\Users\Clément\Desktop\Efrei\M1\Cours\C#\Project\Project\obj\Debug\Project.csprojResolveAssemblyReference.cache
+C:\Users\Clément\Desktop\Efrei\M1\Cours\C#\Project\Project\obj\Debug\Project.csproj.CoreCompileInputs.cache
+C:\Users\Clément\Desktop\Efrei\M1\Cours\C#\Project\Project\obj\Debug\Project.exe
+C:\Users\Clément\Desktop\Efrei\M1\Cours\C#\Project\Project\obj\Debug\Project.pdb
