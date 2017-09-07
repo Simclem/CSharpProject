@@ -1,4 +1,6 @@
-﻿using System;
+﻿//Clément Simon & Florian Allermoz - C# Project - 2017
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +10,8 @@ namespace Project.Entity
 {
     class Zombie
     {
+
+        //Attributs d'un zombie
         private int currentHealth;
         private int maxHealth;
         private int currentHit;
@@ -15,12 +19,11 @@ namespace Project.Entity
         private int damage;
         private string name;
 
-
-
-
+        //Constructeur par défaut
         public Zombie()
         { }
 
+        //Constructeur avec tous les attributs d'un zombie
         public Zombie(int NewCurrentHealth, int NewMaxHealth, int NewCurrentHit, int NewMaxHit, int newLevel, int NewDamage, string NewNameZombie)
         {
             CurrentHealth = NewCurrentHealth;
@@ -31,34 +34,33 @@ namespace Project.Entity
             Name = NewNameZombie;
         }
 
-
+        //Fonction pour savoir si le zombie est en vie
         public bool IsAlive()
         {
             return (CurrentHealth > 0);
         }
 
+        //Méthode pour que le zombie prenne des dégats
         public void TakeDamage(int DamageTaken)
         {
             CurrentHealth -= DamageTaken;
+            //Si le zombie est battu
             if (CurrentHealth <=0)
             {
                 Console.WriteLine(Name + " fainted \n");
             }
         }
 
-
-
-
+        //Fonction pour savoir si le zombie peut attaquer (si il lui reste des coups à donner)
         public bool canAttack()
         {
             return (currentHit > 0);
         }
 
-
-
-
+        //Méthode pour que le zombie attaque
         public void Attack(Soldier SoldierAttacked, Wall ProtectionWall)
         {
+            //Le zombie attaque en priorité le mur (si il est encore debout)
             if (ProtectionWall.IsDown())
             {
                 SoldierAttacked.TakeDamage(this.Damage);
@@ -67,18 +69,9 @@ namespace Project.Entity
             {
                 ProtectionWall.TakeDamage(this.damage);
             }
-
         }
 
-
-
-
-
-
-
-
-
-
+        //Getter et Setter
         public int CurrentHealth
         {
             get
@@ -146,6 +139,8 @@ namespace Project.Entity
                 this.name = value;
             }
         }
+
+        //Méthode pour voir tous les attributs du zombie
         public string ToString()
         {
             return "Zombie\nCurrent health : " + CurrentHealth + "\nMax Health : " + MaxHealth + "\nCurrentHit : " + CurrentHit + "\nMax hit : " + MaxHit + "\nDamage : " + Damage + "\nName : " + Name+"\n";

@@ -103,7 +103,7 @@ namespace Project.Entity
             }
         }
 
-        
+        //Getter et Setter
         public int CurrentHealth
         {
             get
@@ -193,6 +193,7 @@ namespace Project.Entity
             }
         }
     
+        //Méthode pour voir tous les attibuts du soldat
         public string ToString()
         {
             return "Soldier\nCurrent health : " + CurrentHealth + "\nMax Health : " + MaxHealth + "\nCurrentHit : " + CurrentHit + "\nMax hit : " + MaxHit + "\nLevel : " + Level+ "\nDamage : " + Damage+"\nZombie killes this turn : " +ZombieKillesThisTurn+"\nName : " + Name;

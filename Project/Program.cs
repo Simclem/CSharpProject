@@ -1,4 +1,6 @@
-﻿using System;
+﻿//Clément Simon & Florian Allermoz - C# Project - 2017
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,8 +16,10 @@ namespace Project
         static void Main(string[] args)
         {
 
+            //Création des joueur de la partie
             List<Soldier> ListOfSoldier = InitSoldier(3);
             Wall DefenseWall = new Wall(10, 10);
+
             /* Console.WriteLine(ListOfSoldier[0].ToString());
              Console.WriteLine();
              Console.WriteLine();
@@ -65,6 +69,8 @@ namespace Project
              Console.WriteLine(DefenseWall.ToString());
              Console.WriteLine(ListOfSoldier[0].ToString());
              */
+
+            //on commence une vague
             Wave vagueTest = new Wave(1, 10);
             vagueTest.UpdateLevel(ListOfSoldier);
             Console.WriteLine(ListOfSoldier[0].ToString());
@@ -85,6 +91,7 @@ namespace Project
 
         public static List<Soldier> InitSoldier(int NbSoldiers)
         {
+            //initialisation des soldats
             List<Soldier> ListOfSoldier = new List<Soldier>();
             for(int i = 0; i < NbSoldiers; i ++)
             {
