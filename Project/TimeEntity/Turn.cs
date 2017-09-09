@@ -64,19 +64,19 @@ namespace Project.TimeEntity
         //Fonction pour trouver le premier zombie encore en vie
         public Zombie FindFirstZombieAlive(List<Zombie> ListOfZombie)
         {
-            int i = 0;
+            //int i = 0;
+
             
-            while ((ListOfZombie[i].IsAlive()) && (i< ListOfZombie.Count))
+
+
+            for (int i =0; i < ListOfZombie.Count; i ++)
             {
                 if (ListOfZombie[i].IsAlive())
                 {
-                    Console.WriteLine("------------------------------------------------------");
-                    Console.WriteLine(ListOfZombie[i].ToString());
-                    Console.WriteLine("------------------------------------------------------");
-                    return (ListOfZombie[i]);
+                    return ListOfZombie[i];
                 }
-                i++;
             }
+
             return null;
         }
 
