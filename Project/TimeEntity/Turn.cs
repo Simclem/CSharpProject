@@ -29,39 +29,39 @@ namespace Project.TimeEntity
         //Méthode pour débuter le combat entre les soldats et les zombies
         public void AttackPhase(List<Soldier> ListOfSoldier, List<Zombie>ListOfZombie, Wall DefenseWall)
         {
+            // On commence par faire attaquer l'ensemble des soldats
             for (int i = 0; i < ListOfSoldier.Count; i++)
             {
-
-                for (int y = ListOfSoldier[i].CurrentHit; y > 0; y--)
+                if (ListOfSoldier[i].canAttack())
                 {
-
-                    Zombie LastZombie = FindFirstZombieAlive(ListOfZombie);
-                    
-                    if (LastZombie != null)
+                    for (int y = ListOfSoldier[i].CurrentHit; y > 0; y--)
                     {
-                        if (ListOfSoldier[i].canAttack())
+                        Zombie LastZombie = FindFirstZombieAlive(ListOfZombie);
+                        if (LastZombie != null)
                         {
                             Console.WriteLine("ATTACKED DONE");
                             ListOfSoldier[i].Attack(LastZombie);
                         }
-                        
                     }
                 }
-               
             }
+            //Puis on fait attaquer tous les zombis
             for (int i = 0; i < ListOfZombie.Count; i++)
             {
-                for (int y = ListOfZombie[i].CurrentHit; y >  0; y--)
+                if (ListOfZombie[i].canAttack())
                 {
-                    Soldier LastSoldierAlive = FindFirstSoldierAlive(ListOfSoldier);
+                    for (int y = ListOfZombie[i].CurrentHit; y > 0; y--)
                     {
-                        if (LastSoldierAlive!= null)
+                        Soldier LastSoldierAlive = FindFirstSoldierAlive(ListOfSoldier);
                         {
-                            Console.WriteLine("graaaaaa");
-                            ListOfZombie[i].Attack(LastSoldierAlive, DefenseWall);
+                            if (LastSoldierAlive != null)
+                            {
+                                ListOfZombie[i].Attack(LastSoldierAlive, DefenseWall);
+                            }
                         }
                     }
                 }
+
             }
         }
 
