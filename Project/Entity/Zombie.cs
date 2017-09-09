@@ -45,7 +45,7 @@ namespace Project.Entity
         {
             CurrentHealth -= DamageTaken;
             //Si le zombie est battu
-            currentHealth -= DamageTaken;
+            
             if (CurrentHealth <=0)
             {
                 Console.WriteLine(Name + " fainted \n");
