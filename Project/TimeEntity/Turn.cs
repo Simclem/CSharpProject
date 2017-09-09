@@ -27,28 +27,41 @@ namespace Project.TimeEntity
 
 
         //Méthode pour débuter le combat entre les soldats et les zombies
-        public void AttackPhase(List<Soldier> ListOfSoldier, List<Zombie>ListOfZombie)
+        public void AttackPhase(List<Soldier> ListOfSoldier, List<Zombie>ListOfZombie, Wall DefenseWall)
         {
             for (int i = 0; i < ListOfSoldier.Count; i++)
             {
-                int nbAttack = 0;
 
                 for (int y = ListOfSoldier[i].CurrentHit; y > 0; y--)
                 {
-                    nbAttack ++;
 
                     Zombie LastZombie = FindFirstZombieAlive(ListOfZombie);
                     
                     if (LastZombie != null)
                     {
-                        Console.WriteLine("ATTACKED DONE");
-                        ListOfSoldier[i].Attack(LastZombie);
+                        if (ListOfSoldier[i].canAttack())
+                        {
+                            Console.WriteLine("ATTACKED DONE");
+                            ListOfSoldier[i].Attack(LastZombie);
+                        }
+                        
                     }
                 }
-                Console.WriteLine("__________________");
-                Console.WriteLine("Current " + ListOfSoldier[i].CurrentHit);
-                Console.WriteLine("nbAttack " + nbAttack);
-                Console.WriteLine("__________________");
+               
+            }
+            for (int i = 0; i < ListOfZombie.Count; i++)
+            {
+                for (int y = ListOfZombie[i].CurrentHit; y >  0; y--)
+                {
+                    Soldier LastSoldierAlive = FindFirstSoldierAlive(ListOfSoldier);
+                    {
+                        if (LastSoldierAlive!= null)
+                        {
+                            Console.WriteLine("graaaaaa");
+                            ListOfZombie[i].Attack(LastSoldierAlive, DefenseWall);
+                        }
+                    }
+                }
             }
         }
 
@@ -64,16 +77,23 @@ namespace Project.TimeEntity
         //Fonction pour trouver le premier zombie encore en vie
         public Zombie FindFirstZombieAlive(List<Zombie> ListOfZombie)
         {
-            //int i = 0;
-
-            
-
-
-            for (int i =0; i < ListOfZombie.Count; i ++)
+            for (int i = 0; i < ListOfZombie.Count; i++)
             {
                 if (ListOfZombie[i].IsAlive())
                 {
                     return ListOfZombie[i];
+                }
+            }
+
+            return null;
+        }
+        public Soldier FindFirstSoldierAlive(List<Soldier> ListOfSoldier)
+        {
+            for (int i = 0; i < ListOfSoldier.Count; i++)
+            {
+                if (ListOfSoldier[i].IsAlive())
+                {
+                    return ListOfSoldier[i];
                 }
             }
 

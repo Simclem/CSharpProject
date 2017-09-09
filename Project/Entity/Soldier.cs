@@ -46,7 +46,15 @@ namespace Project.Entity
 
         public bool canAttack()
         {
-            return (currentHit > 0);
+            if (IsAlive())
+            {
+                return (currentHit > 0);
+            }
+            else
+            {
+                return false;
+            }
+            
         }
 
 

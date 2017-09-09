@@ -55,7 +55,14 @@ namespace Project.Entity
         //Fonction pour savoir si le zombie peut attaquer (si il lui reste des coups à donner)
         public bool canAttack()
         {
-            return (currentHit > 0);
+            if (IsAlive())
+            {
+                return (currentHit > 0);
+            }
+            else
+            {
+                return false;
+            }
         }
 
         //Méthode pour que le zombie attaque

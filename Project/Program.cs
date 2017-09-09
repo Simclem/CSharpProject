@@ -81,7 +81,7 @@ namespace Project
             vagueTest.UpdateLevel(ListOfSoldier);
             Console.WriteLine(ListOfSoldier[0].ToString());
             Turn tour = new Turn(1);
-            tour.AttackPhase(ListOfSoldier, ListZombie);
+            tour.AttackPhase(ListOfSoldier, ListZombie, DefenseWall);
 
 
             Console.WriteLine();
@@ -92,6 +92,13 @@ namespace Project
             Console.WriteLine("Zombie " + zombie.ToString());
             Console.WriteLine("Zomb " + zomb.ToString());
             Console.WriteLine("Z " + z.ToString());
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine(ListOfSoldier[0].ToString());
+            Console.WriteLine();
+            Console.WriteLine(ListOfSoldier[1].ToString());
+            Console.WriteLine();
+            Console.WriteLine(ListOfSoldier[2].ToString());
             //Console.WriteLine(vagueTest.ToString());
             Console.ReadLine();
 
