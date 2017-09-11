@@ -31,7 +31,9 @@ namespace Project.TimeEntity
         //Méthode pour commencer la vague
         public void Play(List<Soldier> ListOfSoldier, Wall DefenseWall)
         {
+            
             int i = 1;
+            FirstPhase(ListOfSoldier, DefenseWall);
             while ((AreSoldierAlive(ListOfSoldier) == true) && (AreZombieAlive(ListOfZombie)))
             {
                 Turn NewTurn = new Turn(i);
@@ -60,6 +62,34 @@ namespace Project.TimeEntity
                 }
                 ListOfSoldier[i].ZombieKillesThisTurn = 0;
             }
+        }
+        public void FirstPhase(List<Soldier> ListOfSoldier, Wall DefenseWall)
+        {
+            Console.WriteLine("First phase");
+            Console.WriteLine("New Zombies are coming.");
+            for (int i = 0; i < this.ListOfZombie.Count; i++)
+            {
+                Console.WriteLine("Name : " + this.ListOfZombie[i].Name);
+                Console.WriteLine("Damage : " + this.ListOfZombie[i].Damage);
+                Console.WriteLine("Life : " + this.ListOfZombie[i].MaxHealth);
+                Console.WriteLine("Number of hit : " + this.ListOfZombie[i].MaxHit +"\n");
+                
+
+            }
+            Console.WriteLine("Your Soldier alive");
+            for (int i = 0; i < ListOfSoldier.Count; i++)
+            {
+                Console.WriteLine("Name : " + ListOfSoldier[i].Name);
+                Console.WriteLine("Damage : " + ListOfSoldier[i].Damage);
+                Console.WriteLine("Life : " + ListOfSoldier[i].CurrentHealth);
+                Console.WriteLine("Number of hit : " + ListOfSoldier[i].MaxHit);
+                Console.WriteLine("Level : " + ListOfSoldier[i].Level + "\n");
+
+            }
+            Console.WriteLine("The Wall : " + DefenseWall.CurrentHealth+"hp" + "\n");
+            Console.WriteLine("Press enter to continue ...");
+            Console.ReadLine();
+
         }
         public bool AreSoldierAlive(List<Soldier> ListOfSoldier)
         {
