@@ -14,7 +14,7 @@ namespace Project.TimeEntity
         //Attributs de la vague 
         private int idWave;
         private int numberZombies;
-
+        private List<Zombie> ListOfZombie;
         //Constructeur par défaut
         public Wave()
         { }
@@ -24,11 +24,24 @@ namespace Project.TimeEntity
         {
             IdWave = NewIdWave;
             NumberZombies = NewNumberZombies;
+            List<Zombie> ListOfZombie = new List<Zombie>();
+            for (int i = 0; i < NumberZombies; i ++)
+            {
+                Zombie NewZombie = new Zombie(2, 2, 1, 1, 1, 1, "Zombie " + (i+1));
+                ListOfZombie.Add(NewZombie);
+            }
         }
 
         //Méthode pour commencer la vague
         public void Play(List<Soldier> ListOfSoldier, Wall DefenseWall)
         {
+            int i = 1;
+            while ((AreSoldierAlive(ListOfSoldier) == true) && (AreZombieAlive(ListOfZombie)))
+            {
+                Turn NewTurn = new Turn(i);
+                NewTurn.AttackPhase(ListOfSoldier, ListOfZombie, DefenseWall);
+                i++;
+            }
             //TODO Créer le nombre de zombie qui vont attaquer
 
         }
@@ -45,7 +58,29 @@ namespace Project.TimeEntity
                 }
             }
         }
+        public bool AreSoldierAlive(List<Soldier> ListOfSoldier)
+        {
+            for (int i = 0; i < ListOfSoldier.Count; i++)
+            {
+                if (ListOfSoldier[i].IsAlive())
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
 
+        public bool AreZombieAlive(List<Zombie> ListOfZombie)
+        {
+            for (int i = 0; i < ListOfZombie.Count; i++)
+            {
+                if (ListOfZombie[i].IsAlive())
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
         //Getter et Setter
         public int IdWave
         {
