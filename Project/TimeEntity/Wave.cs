@@ -90,7 +90,7 @@ namespace Project.TimeEntity
 
                 ListZombie.Add(NewZombie);
             }
-            Console.WriteLine("Pause");
+
             return ListZombie;
         }
 

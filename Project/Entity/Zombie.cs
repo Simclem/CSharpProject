@@ -71,11 +71,16 @@ namespace Project.Entity
             //Le zombie attaque en priorité le mur (si il est encore debout)
             if (ProtectionWall.IsDown())
             {
+                Console.WriteLine(this.Name + " Attack " + SoldierAttacked.Name);
                 SoldierAttacked.TakeDamage(this.Damage);
+                Console.WriteLine(SoldierAttacked.Name +" life : " + SoldierAttacked.CurrentHealth);
+
             }
             else
             {
+                Console.WriteLine(this.Name +" Attack the wall");
                 ProtectionWall.TakeDamage(this.damage);
+                Console.WriteLine("Wall life : " + ProtectionWall.CurrentHealth);
             }
         }
 

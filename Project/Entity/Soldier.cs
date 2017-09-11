@@ -100,7 +100,9 @@ namespace Project.Entity
         public void Attack(Zombie ZombieAttacked)
         {
             //le zombie prend le dommage du soldat
+            Console.WriteLine(this.Name + "attack " + ZombieAttacked.Name);
             ZombieAttacked.TakeDamage(this.Damage);
+            Console.WriteLine(ZombieAttacked.Name + " life :" + ZombieAttacked.CurrentHealth);
             //le soldat incrémente son compteur de zombie tués
             if (ZombieAttacked.CurrentHealth <= 0 )
             {

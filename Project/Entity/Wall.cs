@@ -29,7 +29,7 @@ namespace Project.Entity
         //Fonction pour savoir si le mur est tombé face aux assaillants
         public bool IsDown()
         {
-            return (CurrentHealth < 0);
+            return (CurrentHealth <= 0);
         }
 
         //Méthode pour que le mur prenne des dégats quand il est attaqué
