@@ -64,6 +64,8 @@ namespace Project.Entity
             CurrentHealth += NbLevel;
             MaxHealth += NbLevel;
             Level += NbLevel;
+            Console.WriteLine(this.Name + " Take a new level");
+            Console.WriteLine("Current health : " + CurrentHealth +"\nMax : " + MaxHealth + "\n" + "Level : " + Level);
             //Son hit maximum dépend dans quel dizaine est son niveau
             if ((Level % 10) >= 1)
             {
