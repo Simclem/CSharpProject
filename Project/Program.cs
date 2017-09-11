@@ -36,7 +36,7 @@ namespace Project
             for(int i = 0; i < NbSoldiers; i ++)
             {
 
-                Soldier NewSoldier = new Soldier(3, 3, 1, 1, 1, 1, 10,"Soldier "+(i+1));
+                Soldier NewSoldier = new Soldier(3, 3, 1, 1, 1, 1, 0,"Soldier "+(i+1));
 
                 ListOfSoldier.Add(NewSoldier);
             }
