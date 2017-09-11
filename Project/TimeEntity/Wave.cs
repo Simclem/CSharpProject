@@ -36,7 +36,11 @@ namespace Project.TimeEntity
             {
                 Turn NewTurn = new Turn(i);
                 NewTurn.AttackPhase(ListOfSoldier, ListOfZombie, DefenseWall);
+                Console.WriteLine("\n \n__________________");
+                UpdateLevel(ListOfSoldier);
+                Console.WriteLine("\n \n__________________");
                 i++;
+
             }
             Console.WriteLine("End Wave");
             //TODO Créer le nombre de zombie qui vont attaquer
@@ -48,11 +52,13 @@ namespace Project.TimeEntity
         {
             for (int i = 0; i < ListOfSoldier.Count; i ++)
             {
+                Console.WriteLine("Zombie tué : " + ListOfSoldier[i].ZombieKillesThisTurn);
                 //si un soldat a tué au moins un zombie, on lui augmente son niveau
-                if (ListOfSoldier[i].ZombieKillesThisTurn > 0)
+                if ((ListOfSoldier[i].ZombieKillesThisTurn > 0) && (ListOfSoldier[i].IsAlive()))
                 {
                     ListOfSoldier[i].TakeLevel(ListOfSoldier[i].ZombieKillesThisTurn);
                 }
+                ListOfSoldier[i].ZombieKillesThisTurn = 0;
             }
         }
         public bool AreSoldierAlive(List<Soldier> ListOfSoldier)
