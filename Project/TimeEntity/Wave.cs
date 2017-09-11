@@ -14,7 +14,7 @@ namespace Project.TimeEntity
         //Attributs de la vague 
         private int idWave;
         private int numberZombies;
-        private List<Zombie> ListOfZombie;
+        private List<Zombie> listOfZombie;
         //Constructeur par défaut
         public Wave()
         { }
@@ -24,12 +24,8 @@ namespace Project.TimeEntity
         {
             IdWave = NewIdWave;
             NumberZombies = NewNumberZombies;
-            List<Zombie> ListOfZombie = new List<Zombie>();
-            for (int i = 0; i < NumberZombies; i ++)
-            {
-                Zombie NewZombie = new Zombie(2, 2, 1, 1, 1, 1, "Zombie " + (i+1));
-                ListOfZombie.Add(NewZombie);
-            }
+            ListOfZombie = InitZombie(NumberZombies);
+
         }
 
         //Méthode pour commencer la vague
@@ -42,6 +38,7 @@ namespace Project.TimeEntity
                 NewTurn.AttackPhase(ListOfSoldier, ListOfZombie, DefenseWall);
                 i++;
             }
+            Console.WriteLine("End Wave");
             //TODO Créer le nombre de zombie qui vont attaquer
 
         }
@@ -81,6 +78,22 @@ namespace Project.TimeEntity
             }
             return false;
         }
+
+        public static List<Zombie> InitZombie(int NZombie)
+        {
+            //initialisation des zombies
+            List<Zombie> ListZombie = new List<Zombie>();
+            for (int i = 0; i < NZombie; i++)
+            {
+
+                Zombie NewZombie = new Zombie(3, 3, 1, 1, 1, 1,"Zombie " + (i + 1));
+
+                ListZombie.Add(NewZombie);
+            }
+            Console.WriteLine("Pause");
+            return ListZombie;
+        }
+
         //Getter et Setter
         public int IdWave
         {
@@ -102,6 +115,17 @@ namespace Project.TimeEntity
             set
             {
                 this.numberZombies = value;
+            }
+        }
+        public List<Zombie> ListOfZombie
+        {
+            get
+            {
+                return this.listOfZombie;
+            }
+            set
+            {
+                this.listOfZombie = value;
             }
         }
 
