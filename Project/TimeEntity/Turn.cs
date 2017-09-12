@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Project.Entity;
 namespace Project.TimeEntity
 {
-    class Turn
+    public class Turn
     {
 
         //Attribut du tour

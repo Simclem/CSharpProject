@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Project.Entity
 {
-    class Wall
+   public  class Wall
     {
 
       

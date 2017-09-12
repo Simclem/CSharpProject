@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Project.Entity
 {
-    class Zombie
+    public class Zombie
     {
 
         //Constructeur par défaut

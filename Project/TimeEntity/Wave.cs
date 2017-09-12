@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Project.Entity;
 namespace Project.TimeEntity
 {
-    class Wave
+    public class Wave
     {
 
         //Attributs de la vague 

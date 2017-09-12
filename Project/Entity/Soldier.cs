@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Project.Entity
 {
-    class Soldier
+    public class Soldier
     {
 
         //Attributs d'un soldat
