@@ -12,20 +12,16 @@ namespace Project.TimeEntity
     {
 
         //Attributs de la vague 
-        private int idWave;
-        private int numberZombies;
-        private List<Zombie> listOfZombie;
         //Constructeur par défaut
         public Wave()
         { }
 
         //Constructeur avec les attributs
-        public Wave(int NewIdWave, int NewNumberZombies)
+        public Wave(int newIdWave, int newNumberZombies)
         {
-            IdWave = NewIdWave;
-            NumberZombies = NewNumberZombies;
+            IdWave = newIdWave;
+            NumberZombies = newNumberZombies;
             ListOfZombie = InitZombie(NumberZombies);
-
         }
 
         //Méthode pour commencer la vague
@@ -38,32 +34,29 @@ namespace Project.TimeEntity
             {
                 Turn NewTurn = new Turn(i);
                 NewTurn.AttackPhase(ListOfSoldier, ListOfZombie, DefenseWall);
-                Console.WriteLine("\n \n__________________");
+                Console.WriteLine("Press enter to update the level of soldiers");
+                Console.ReadLine();
                 UpdateLevel(ListOfSoldier);
-                Console.WriteLine("\n \n__________________");
                 i++;
-
             }
             Console.WriteLine("End Wave");
-            //TODO Créer le nombre de zombie qui vont attaquer
-
         }
 
         //Méthode pour augmenter les niveaux des soldats
-        public void UpdateLevel(List<Soldier> ListOfSoldier)
+        public void UpdateLevel(List<Soldier> listOfSoldier)
         {
-            for (int i = 0; i < ListOfSoldier.Count; i ++)
+            for (int i = 0; i < listOfSoldier.Count; i ++)
             {
-                Console.WriteLine("Zombie tué : " + ListOfSoldier[i].ZombieKillesThisTurn);
+                Console.WriteLine("Zombie tué : " + listOfSoldier[i].ZombieKillesThisTurn);
                 //si un soldat a tué au moins un zombie, on lui augmente son niveau
-                if ((ListOfSoldier[i].ZombieKillesThisTurn > 0) && (ListOfSoldier[i].IsAlive()))
+                if ((listOfSoldier[i].ZombieKillesThisTurn > 0) && (listOfSoldier[i].IsAlive()))
                 {
-                    ListOfSoldier[i].TakeLevel(ListOfSoldier[i].ZombieKillesThisTurn);
+                    listOfSoldier[i].TakeLevel(listOfSoldier[i].ZombieKillesThisTurn);
                 }
-                ListOfSoldier[i].ZombieKillesThisTurn = 0;
+                listOfSoldier[i].ZombieKillesThisTurn = 0;
             }
         }
-        public void FirstPhase(List<Soldier> ListOfSoldier, Wall DefenseWall)
+        public void FirstPhase(List<Soldier> listOfSoldier, Wall defenseWall)
         {
             Console.WriteLine("First phase");
             Console.WriteLine("New Zombies are coming.");
@@ -77,25 +70,25 @@ namespace Project.TimeEntity
 
             }
             Console.WriteLine("Your Soldier alive");
-            for (int i = 0; i < ListOfSoldier.Count; i++)
+            for (int i = 0; i < listOfSoldier.Count; i++)
             {
-                Console.WriteLine("Name : " + ListOfSoldier[i].Name);
-                Console.WriteLine("Damage : " + ListOfSoldier[i].Damage);
-                Console.WriteLine("Life : " + ListOfSoldier[i].CurrentHealth);
-                Console.WriteLine("Number of hit : " + ListOfSoldier[i].MaxHit);
-                Console.WriteLine("Level : " + ListOfSoldier[i].Level + "\n");
+                Console.WriteLine("Name : " + listOfSoldier[i].Name);
+                Console.WriteLine("Damage : " + listOfSoldier[i].Damage);
+                Console.WriteLine("Life : " + listOfSoldier[i].CurrentHealth);
+                Console.WriteLine("Number of hit : " + listOfSoldier[i].MaxHit);
+                Console.WriteLine("Level : " + listOfSoldier[i].Level + "\n");
 
             }
-            Console.WriteLine("The Wall : " + DefenseWall.CurrentHealth+"hp" + "\n");
+            Console.WriteLine("The Wall : " + defenseWall.CurrentHealth+"hp" + "\n");
             Console.WriteLine("Press enter to continue ...");
             Console.ReadLine();
 
         }
-        public bool AreSoldierAlive(List<Soldier> ListOfSoldier)
+        public bool AreSoldierAlive(List<Soldier> listOfSoldier)
         {
-            for (int i = 0; i < ListOfSoldier.Count; i++)
+            for (int i = 0; i < listOfSoldier.Count; i++)
             {
-                if (ListOfSoldier[i].IsAlive())
+                if (listOfSoldier[i].IsAlive())
                 {
                     return true;
                 }
@@ -103,11 +96,11 @@ namespace Project.TimeEntity
             return false;
         }
 
-        public bool AreZombieAlive(List<Zombie> ListOfZombie)
+        public bool AreZombieAlive(List<Zombie> listOfZombie)
         {
-            for (int i = 0; i < ListOfZombie.Count; i++)
+            for (int i = 0; i < listOfZombie.Count; i++)
             {
-                if (ListOfZombie[i].IsAlive())
+                if (listOfZombie[i].IsAlive())
                 {
                     return true;
                 }
@@ -115,58 +108,28 @@ namespace Project.TimeEntity
             return false;
         }
 
-        public static List<Zombie> InitZombie(int NZombie)
+        public static List<Zombie> InitZombie(int nZombie)
         {
             //initialisation des zombies
-            List<Zombie> ListZombie = new List<Zombie>();
-            for (int i = 0; i < NZombie; i++)
+            List<Zombie> listZombie = new List<Zombie>();
+            for (int i = 0; i < nZombie; i++)
             {
 
                 Zombie NewZombie = new Zombie(3, 3, 1, 1, 1, 1,"Zombie " + (i + 1));
 
-                ListZombie.Add(NewZombie);
+                listZombie.Add(NewZombie);
             }
 
-            return ListZombie;
+            return listZombie;
         }
 
         //Getter et Setter
-        public int IdWave
-        {
-            get
-            {
-                return this.idWave;
-            }
-            set
-            {
-                this.idWave = value;
-            }
-        }
-        public int NumberZombies
-        {
-            get
-            {
-                return this.numberZombies;
-            }
-            set
-            {
-                this.numberZombies = value;
-            }
-        }
-        public List<Zombie> ListOfZombie
-        {
-            get
-            {
-                return this.listOfZombie;
-            }
-            set
-            {
-                this.listOfZombie = value;
-            }
-        }
+        public int IdWave { get; set; }
+        public int NumberZombies { get; set; }
+        public List<Zombie> ListOfZombie { get; set; }
 
         //Méthode pour voir tous les attributs de la vague
-        public string ToString()
+        public override string ToString()
         {
             return ("Wave : \nIdWave : " + this.IdWave+"\nNumber Zombie : " +this.NumberZombies);
         }

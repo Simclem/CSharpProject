@@ -12,30 +12,23 @@ namespace Project.Entity
     {
 
         //Attributs d'un soldat
-        private int currentHealth;
-        private int maxHealth;
-        private int currentHit;
-        private int maxHit;
-        private int level;
-        private int damage;
-        private int zombieKillesThisTurn;
-        private string name;
+       
 
         //Constructeur par défaut
         public Soldier()
         { }
 
         //Constructeur avec les attributs
-        public Soldier(int NewCurrentHealth, int NewMaxHealth, int NewCurrentHit, int NewMaxHit, int newLevel, int NewDamage, int NewZombieKillesThisTurn, string NewNameSoldier)
+        public Soldier(int newCurrentHealth, int newMaxHealth, int newCurrentHit, int newMaxHit, int newLevel, int newDamage, int newZombieKillesThisTurn, string newNameSoldier)
         {
-            CurrentHealth = NewCurrentHealth;
-            MaxHealth = NewMaxHealth;
-            CurrentHit = NewCurrentHit;
-            MaxHit = NewMaxHit;
+            CurrentHealth = newCurrentHealth;
+            MaxHealth = newMaxHealth;
+            CurrentHit = newCurrentHit;
+            MaxHit = newMaxHit;
             Level = newLevel;
-            Damage = NewDamage;
-            ZombieKillesThisTurn = NewZombieKillesThisTurn;
-            Name = NewNameSoldier;
+            Damage = newDamage;
+            ZombieKillesThisTurn = newZombieKillesThisTurn;
+            Name = newNameSoldier;
         }
 
 
@@ -44,11 +37,11 @@ namespace Project.Entity
             return (CurrentHealth > 0);
         }
 
-        public bool canAttack()
+        public bool CanAttack()
         {
             if (IsAlive())
             {
-                return (currentHit > 0);
+                return (CurrentHit > 0);
             }
             else
             {
@@ -58,12 +51,12 @@ namespace Project.Entity
         }
 
 
-        public void TakeLevel(int NbLevel)
+        public void TakeLevel(int nbLevel)
         {
             //on ajoute à ses attibuts son nouveau niveau
-            CurrentHealth += NbLevel;
-            MaxHealth += NbLevel;
-            Level += NbLevel;
+            CurrentHealth += nbLevel;
+            MaxHealth += nbLevel;
+            Level += nbLevel;
             Console.WriteLine(this.Name + " Take a new level");
             Console.WriteLine("Current health : " + CurrentHealth +"\nMax : " + MaxHealth + "\n" + "Level : " + Level);
             //Son hit maximum dépend dans quel dizaine est son niveau
@@ -74,9 +67,9 @@ namespace Project.Entity
         }
 
         //Méthode pour qu'un soldat prenne un dommage
-        public void TakeDamage(int DamageTaken)
+        public void TakeDamage(int damageTaken)
         {
-            CurrentHealth -= DamageTaken;
+            CurrentHealth -= damageTaken;
             //Si le soldat meurt au combat
             if (CurrentHealth<=0)
             {
@@ -85,125 +78,46 @@ namespace Project.Entity
         }
 
         //Méthode pour que le soldat gagne de la vie
-        public void TakeHeal(int HealTaken)
+        public void TakeHeal(int healTaken)
         {
             //Si ça dépasse son maximum de vie possible
-            if ((CurrentHealth + HealTaken) > MaxHealth)
+            if ((CurrentHealth + healTaken) > MaxHealth)
             {
                 CurrentHealth = MaxHealth;
             }
             else
             {
-                CurrentHealth += HealTaken;
+                CurrentHealth += healTaken;
             }
         }
 
         //Méthode pour qu'un soldat attaque un zombie
-        public void Attack(Zombie ZombieAttacked)
+        public void Attack(Zombie zombieAttacked)
         {
             //le zombie prend le dommage du soldat
-            Console.WriteLine(this.Name + "attack " + ZombieAttacked.Name);
-            ZombieAttacked.TakeDamage(this.Damage);
-            Console.WriteLine(ZombieAttacked.Name + " life :" + ZombieAttacked.CurrentHealth);
+            Console.WriteLine(this.Name + "attack " + zombieAttacked.Name);
+            zombieAttacked.TakeDamage(this.Damage);
+            Console.WriteLine(zombieAttacked.Name + " life :" + zombieAttacked.CurrentHealth);
             //le soldat incrémente son compteur de zombie tués
-            if (ZombieAttacked.CurrentHealth <= 0 )
+            if (zombieAttacked.CurrentHealth <= 0 )
             {
                 this.ZombieKillesThisTurn += 1;
             }
         }
 
         //Getter et Setter
-        public int CurrentHealth
-        {
-            get
-            {
-                return this.currentHealth;
-            }
-            set
-            {
-                this.currentHealth = value;
-            }
-        }
-        public int MaxHealth
-        {
-            get
-            {
-                return this.maxHealth;
-            }
-            set
-            {
-                this.maxHealth = value;
-            }
-        }
-        public int CurrentHit
-        {
-            get
-            {
-                return this.currentHit;
-            }
-            set
-            {
-                this.currentHit = value;
-            }
-        }
-        public int MaxHit
-        {
-            get
-            {
-                return this.maxHit;
-            }
-            set
-            {
-                this.maxHit = value;
-            }
-        }
-        public int Level
-        {
-            get
-            {
-                return this.level;
-            }
-            set
-            {
-                this.level = value;
-            }
-        }
-        public int Damage
-        {
-            get
-            {
-                return this.damage;
-            }
-            set
-            {
-                this.damage = value;
-            }
-        }
-        public int ZombieKillesThisTurn
-        {
-            get
-            {
-                return this.zombieKillesThisTurn;
-            }
-            set
-            {
-                this.zombieKillesThisTurn = value;
-            }
-        }
-        public string Name
-        {
-            get
-            {
-                return this.name;
-            }
-            set
-            {
-                this.name = value;
-            }
-        }
-    
+        public int CurrentHealth { get; set; }
+        public int MaxHealth { get; set; }
+        public int CurrentHit { get; set; }
+        
+        public int MaxHit{ get; set; }
+        public int Level { get; set; }
+        public int Damage { get; set; }
+        public int ZombieKillesThisTurn { get; set; }
+        public string Name { get; set; }
+
         //Méthode pour voir tous les attibuts du soldat
-        public string ToString()
+        public override string ToString()
         {
             return "Soldier\nCurrent health : " + CurrentHealth + "\nMax Health : " + MaxHealth + "\nCurrentHit : " + CurrentHit + "\nMax hit : " + MaxHit + "\nLevel : " + Level+ "\nDamage : " + Damage+"\nZombie killes this turn : " +ZombieKillesThisTurn+"\nName : " + Name;
         }

@@ -15,25 +15,24 @@ namespace Project
     {
         static void Main(string[] args)
         {
-
             //Création des joueur de la partie
-            List<Soldier> ListOfSoldier = InitSoldier(3);
-            Wall DefenseWall = new Wall(10, 10);
+            List<Soldier> listOfSoldier = InitSoldier(3);
+            Wall defenseWall = new Wall(10, 10);
             Wave vagueTest = new Wave(1, 10);
-            vagueTest.Play(ListOfSoldier, DefenseWall);
-            vagueTest.UpdateLevel(ListOfSoldier);
-            Console.ReadLine();
-            
 
+            vagueTest.Play(listOfSoldier, defenseWall);
+            vagueTest.UpdateLevel(listOfSoldier);
+
+            Console.ReadLine();
         }
 
 
 
-        public static List<Soldier> InitSoldier(int NbSoldiers)
+        public static List<Soldier> InitSoldier(int nbSoldiers)
         {
             //initialisation des soldats
             List<Soldier> ListOfSoldier = new List<Soldier>();
-            for(int i = 0; i < NbSoldiers; i ++)
+            for(int i = 0; i < nbSoldiers; i ++)
             {
 
                 Soldier NewSoldier = new Soldier(3, 3, 1, 1, 1, 1, 0,"Soldier "+(i+1));

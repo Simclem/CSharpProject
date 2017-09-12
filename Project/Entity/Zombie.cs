@@ -11,27 +11,19 @@ namespace Project.Entity
     class Zombie
     {
 
-        //Attributs d'un zombie
-        private int currentHealth;
-        private int maxHealth;
-        private int currentHit;
-        private int maxHit;
-        private int damage;
-        private string name;
-
         //Constructeur par défaut
         public Zombie()
         { }
 
         //Constructeur avec tous les attributs d'un zombie
-        public Zombie(int NewCurrentHealth, int NewMaxHealth, int NewCurrentHit, int NewMaxHit, int newLevel, int NewDamage, string NewNameZombie)
+        public Zombie(int newCurrentHealth, int newMaxHealth, int newCurrentHit, int newMaxHit, int newLevel, int newDamage, string newNameZombie)
         {
-            CurrentHealth = NewCurrentHealth;
-            MaxHealth = NewMaxHealth;
-            CurrentHit = NewCurrentHit;
-            MaxHit = NewMaxHit;
-            Damage = NewDamage;
-            Name = NewNameZombie;
+            CurrentHealth = newCurrentHealth;
+            MaxHealth = newMaxHealth;
+            CurrentHit = newCurrentHit;
+            MaxHit = newMaxHit;
+            Damage = newDamage;
+            Name = newNameZombie;
         }
 
         //Fonction pour savoir si le zombie est en vie
@@ -41,9 +33,9 @@ namespace Project.Entity
         }
 
         //Méthode pour que le zombie prenne des dégats
-        public void TakeDamage(int DamageTaken)
+        public void TakeDamage(int damageTaken)
         {
-            CurrentHealth -= DamageTaken;
+            CurrentHealth -= damageTaken;
             //Si le zombie est battu
             
             if (CurrentHealth <=0)
@@ -53,11 +45,11 @@ namespace Project.Entity
         }
 
         //Fonction pour savoir si le zombie peut attaquer (si il lui reste des coups à donner)
-        public bool canAttack()
+        public bool CanAttack()
         {
             if (IsAlive())
             {
-                return (currentHit > 0);
+                return (CurrentHit > 0);
             }
             else
             {
@@ -66,95 +58,34 @@ namespace Project.Entity
         }
 
         //Méthode pour que le zombie attaque
-        public void Attack(Soldier SoldierAttacked, Wall ProtectionWall)
+        public void Attack(Soldier soldierAttacked, Wall protectionWall)
         {
             //Le zombie attaque en priorité le mur (si il est encore debout)
-            if (ProtectionWall.IsDown())
+            if (protectionWall.IsDown())
             {
-                Console.WriteLine(this.Name + " Attack " + SoldierAttacked.Name);
-                SoldierAttacked.TakeDamage(this.Damage);
-                Console.WriteLine(SoldierAttacked.Name +" life : " + SoldierAttacked.CurrentHealth);
+                Console.WriteLine(this.Name + " Attack " + soldierAttacked.Name);
+                soldierAttacked.TakeDamage(this.Damage);
+                Console.WriteLine(soldierAttacked.Name +" life : " + soldierAttacked.CurrentHealth);
 
             }
             else
             {
                 Console.WriteLine(this.Name +" Attack the wall");
-                ProtectionWall.TakeDamage(this.damage);
-                Console.WriteLine("Wall life : " + ProtectionWall.CurrentHealth);
+                protectionWall.TakeDamage(this.Damage);
+                Console.WriteLine("Wall life : " + protectionWall.CurrentHealth);
             }
         }
 
         //Getter et Setter
-        public int CurrentHealth
-        {
-            get
-            {
-                return this.currentHealth;
-            }
-            set
-            {
-                this.currentHealth = value;
-            }
-        }
-        public int MaxHealth
-        {
-            get
-            {
-                return this.maxHealth;
-            }
-            set
-            {
-                this.maxHealth = value;
-            }
-        }
-        public int CurrentHit
-        {
-            get
-            {
-                return this.currentHit;
-            }
-            set
-            {
-                this.currentHit = value;
-            }
-        }
-        public int MaxHit
-        {
-            get
-            {
-                return this.maxHit;
-            }
-            set
-            {
-                this.maxHit = value;
-            }
-        }
-        public int Damage
-        {
-            get
-            {
-                return this.damage;
-            }
-            set
-            {
-                this.damage = value;
-            }
-        }
-
-        public string Name
-        {
-            get
-            {
-                return this.name;
-            }
-            set
-            {
-                this.name = value;
-            }
-        }
+        public int CurrentHealth { get; set; }
+        public int MaxHealth { get; set; }
+        public int CurrentHit { get; set; }
+        public int MaxHit { get; set; }
+        public int Damage { get; set; }
+        public string Name { get; set; }
 
         //Méthode pour voir tous les attributs du zombie
-        public string ToString()
+        public override string ToString()
         {
             return "Zombie\nCurrent health : " + CurrentHealth + "\nMax Health : " + MaxHealth + "\nCurrentHit : " + CurrentHit + "\nMax hit : " + MaxHit + "\nDamage : " + Damage + "\nName : " + Name+"\n";
         }

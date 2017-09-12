@@ -11,19 +11,17 @@ namespace Project.Entity
     class Wall
     {
 
-        //Attributs du mur
-        private int currentHealth;
-        private int maxHealth;
+      
 
         //Constructeur par défaut
         public Wall()
         { }
 
         //Constructeur avec les attributs du mur
-        public Wall(int NewCurrentHealth, int NewMaxHealth)
+        public Wall(int newCurrentHealth, int newMaxHealth)
         {
-            CurrentHealth = NewCurrentHealth;
-            MaxHealth = NewMaxHealth;
+            CurrentHealth = newCurrentHealth;
+            MaxHealth = newMaxHealth;
         }
 
         //Fonction pour savoir si le mur est tombé face aux assaillants
@@ -33,42 +31,22 @@ namespace Project.Entity
         }
 
         //Méthode pour que le mur prenne des dégats quand il est attaqué
-        public void TakeDamage(int DamageTaken)
+        public void TakeDamage(int damageTaken)
         {
-            CurrentHealth -= DamageTaken;
+            CurrentHealth -= damageTaken;
             //Si le mur tombe pendant le combat
             if (CurrentHealth <=0)
             {
-                Console.WriteLine("Wall fainted \n");
+                Console.WriteLine("Wall has fallen \n");
             }
         }
 
         //Getter et Setter
-        public int CurrentHealth
-        {
-            get
-            {
-                return this.currentHealth;
-            }
-            set
-            {
-                this.currentHealth = value;
-            }
-        }
-        public int MaxHealth
-        {
-            get
-            {
-                return this.maxHealth;
-            }
-            set
-            {
-                this.maxHealth = value;
-            }
-        }
+        public int CurrentHealth { get; set; }
+        public int MaxHealth { get; set; }
 
         //Méthode pour voir tous les attributs du mur
-        public string ToString()
+        public override string  ToString()
         {
             return "Wall\nCurrent health : " + CurrentHealth + "\nMax Health : " + MaxHealth +"\n";
         }

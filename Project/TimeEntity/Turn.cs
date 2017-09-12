@@ -12,51 +12,50 @@ namespace Project.TimeEntity
     {
 
         //Attribut du tour
-        private int idTurn;
 
         public Turn()
         {
 
         }
 
-        public Turn(int NewIdTurn)
+        public Turn(int newIdTurn)
         {
-            IdTurn = NewIdTurn;
+            IdTurn = newIdTurn;
         }
 
 
 
         //Méthode pour débuter le combat entre les soldats et les zombies
-        public void AttackPhase(List<Soldier> ListOfSoldier, List<Zombie>ListOfZombie, Wall DefenseWall)
+        public void AttackPhase(List<Soldier> listOfSoldier, List<Zombie>listOfZombie, Wall defenseWall)
         {
             // On commence par faire attaquer l'ensemble des soldats
-            for (int i = 0; i < ListOfSoldier.Count; i++)
+            for (int i = 0; i < listOfSoldier.Count; i++)
             {
-                if (ListOfSoldier[i].canAttack())
+                if (listOfSoldier[i].CanAttack())
                 {
-                    for (int y = ListOfSoldier[i].CurrentHit; y > 0; y--)
+                    for (int y = listOfSoldier[i].CurrentHit; y > 0; y--)
                     {
-                        Zombie LastZombie = FindFirstZombieAlive(ListOfZombie);
+                        Zombie LastZombie = FindFirstZombieAlive(listOfZombie);
                         if (LastZombie != null)
                         {
                             Console.WriteLine("ATTACKED DONE");
-                            ListOfSoldier[i].Attack(LastZombie);
+                            listOfSoldier[i].Attack(LastZombie);
                         }
                     }
                 }
             }
             //Puis on fait attaquer tous les zombis
-            for (int i = 0; i < ListOfZombie.Count; i++)
+            for (int i = 0; i < listOfZombie.Count; i++)
             {
-                if (ListOfZombie[i].canAttack())
+                if (listOfZombie[i].CanAttack())
                 {
-                    for (int y = ListOfZombie[i].CurrentHit; y > 0; y--)
+                    for (int y = listOfZombie[i].CurrentHit; y > 0; y--)
                     {
-                        Soldier LastSoldierAlive = FindFirstSoldierAlive(ListOfSoldier);
+                        Soldier LastSoldierAlive = FindFirstSoldierAlive(listOfSoldier);
                         {
                             if (LastSoldierAlive != null)
                             {
-                                ListOfZombie[i].Attack(LastSoldierAlive, DefenseWall);
+                                listOfZombie[i].Attack(LastSoldierAlive, defenseWall);
                             }
                         }
                     }
@@ -66,34 +65,34 @@ namespace Project.TimeEntity
         }
 
         //Méthode pour afficher tous les zombies
-        public void DisplayAllZombies(List<Zombie> ListOfZombie)
+        public void DisplayAllZombies(List<Zombie> listOfZombie)
         {
-            for ( int i = 0; i < ListOfZombie.Count; i ++)
+            for ( int i = 0; i < listOfZombie.Count; i ++)
             {
-                ListOfZombie[i].ToString();
+                listOfZombie[i].ToString();
             }
         }
 
         //Fonction pour trouver le premier zombie encore en vie
-        public Zombie FindFirstZombieAlive(List<Zombie> ListOfZombie)
+        public Zombie FindFirstZombieAlive(List<Zombie> listOfZombie)
         {
-            for (int i = 0; i < ListOfZombie.Count; i++)
+            for (int i = 0; i < listOfZombie.Count; i++)
             {
-                if (ListOfZombie[i].IsAlive())
+                if (listOfZombie[i].IsAlive())
                 {
-                    return ListOfZombie[i];
+                    return listOfZombie[i];
                 }
             }
 
             return null;
         }
-        public Soldier FindFirstSoldierAlive(List<Soldier> ListOfSoldier)
+        public Soldier FindFirstSoldierAlive(List<Soldier> listOfSoldier)
         {
-            for (int i = 0; i < ListOfSoldier.Count; i++)
+            for (int i = 0; i < listOfSoldier.Count; i++)
             {
-                if (ListOfSoldier[i].IsAlive())
+                if (listOfSoldier[i].IsAlive())
                 {
-                    return ListOfSoldier[i];
+                    return listOfSoldier[i];
                 }
             }
 
@@ -101,22 +100,12 @@ namespace Project.TimeEntity
         }
 
         //Getter et Setter
-        public int IdTurn
-        {
-            get
-            {
-                return this.idTurn;
-            }
-            set
-            {
-                this.idTurn = value;
-            }
-        }
+        public int IdTurn { get; set; }
 
         //Méthode pour tous les attributs du tour
-        private string ToString()
+        public override string ToString()
         {
-            return "Turn\nidTurn : " + this.idTurn;
+            return "Turn\nidTurn : " + this.IdTurn;
         }
     }
 }
